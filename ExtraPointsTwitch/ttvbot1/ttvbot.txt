@@ -1,0 +1,27 @@
+//origionaly a .js file
+//if you want this to you will need to download node.js and tmi.js 
+var tmi = require('tmi.js');
+
+var options = {
+	options:{
+	debug:true
+	},
+	connection:{
+	cluster: "aws",
+	reconnect: true
+	},
+  identity: {
+   
+	username: "your name",
+	password: "oauth password code"
+  },
+  channels: [
+    "streamer name"
+  ]
+};
+var client = new tmi.client(options);
+client.connect();
+client.on('connected', async function(address,port){
+	client.action("streamer name","im devin okeefe and this is the message i want to send")
+	
+});
