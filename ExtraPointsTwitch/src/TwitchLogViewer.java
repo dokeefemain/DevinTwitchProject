@@ -30,16 +30,12 @@ class FC extends JFrame implements ActionListener{
 		setLayout (new FlowLayout());
 		setBounds (50,50, 750, 500);f.addActionListener( this );
 		JScrollPane areaScrollPane = new JScrollPane(lotext);
-		areaScrollPane.setVerticalScrollBarPolicy(
-		                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		areaScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		areaScrollPane.setPreferredSize(new Dimension(225, 225));
-		
 		c.addActionListener(this);
 		press.addActionListener(this);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		lotext.setLineWrap(true);
-		
-		
 		add(ftext);
 		add(f);
 		add(ctext);
@@ -103,6 +99,17 @@ class FC extends JFrame implements ActionListener{
 			  return  rtoStringg(a,size-1)+" "+(size+1)+": "+a.get(size);
 		  }
 	  }
+	  public static void insertionSort(String [] A) {
+			for (int i = 0; i < A.length; i++) {
+				int back = i-1;
+				String val = A[i];
+				while(back >= 0 && A[back].compareTo(val)<0) {
+						A[back+1]=A[back];
+						A[back]=val;
+						back -= 1;
+				}
+			}
+		}
 	public void actionPerformed(ActionEvent evt) {
 		String timthetatman = readFileAsString("timthetatman.txt");
 		String xqcow = readFileAsString("xqcow.txt");
@@ -129,6 +136,7 @@ class FC extends JFrame implements ActionListener{
 		dafran = dafran.replace('<', ';');
 		sinatraa = sinatraa.replace('<', ';');
 		String []StreamerNames = {xqcow,timthetatman,shroud,destiny,kabajiow,tfue,dafran,sinatraa};
+		insertionSort(StreamerNames);
 		String s = f.getText();
 		String t = c.getText();
 		String Streamerlog = getStreamerName(s, StreamerNames);
